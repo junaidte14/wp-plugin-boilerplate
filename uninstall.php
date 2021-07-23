@@ -6,7 +6,6 @@
  * @link       https://codoplex.com
  * @since      1.0.0
  *
- * @package    supporty
  */
 
 // If uninstall not called from WordPress, then exit.

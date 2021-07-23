@@ -25,7 +25,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | CONSTANTS
@@ -36,27 +35,27 @@ if ( ! defined( 'CODOWPPB_VERSION' ) )
 if ( ! defined( 'CODOWPPB_NAME' ) )
 	define( 'CODOWPPB_NAME', 'codowppb' );
 
-if ( ! defined( 'codowppb_BASE_FILE' ) )
-    define( 'codowppb_BASE_FILE', __FILE__ );
-if ( ! defined( 'codowppb_BASE_DIR' ) )
-    define( 'codowppb_BASE_DIR', dirname( codowppb_BASE_FILE ) );
-if ( ! defined( 'codowppb_PLUGIN_URL' ) )
-	define( 'codowppb_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if ( ! defined( 'CODOWPPB_BASE_FILE' ) )
+    define( 'CODOWPPB_BASE_FILE', __FILE__ );
+if ( ! defined( 'CODOWPPB_BASE_DIR' ) )
+    define( 'CODOWPPB_BASE_DIR', dirname( CODOWPPB_BASE_FILE ) );
+if ( ! defined( 'CODOWPPB_PLUGIN_URL' ) )
+	define( 'CODOWPPB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 	
 /**
  * The code that runs during plugin activation.
  */
 function activate_codowppb() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-codowppb-activator.php';
-	Codowppb_Activator::activate();
+	require_once CODOWPPB_BASE_DIR . '/includes/admin/class-codowppb-admin.php';
+	CodoWPPB_Admin::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  */
 function deactivate_codowppb() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-codowppb-deactivator.php';
-	Codowppb_Deactivator::deactivate();
+	require_once CODOWPPB_BASE_DIR . '/includes/admin/class-codowppb-admin.php';
+	CodoWPPB_Admin::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_codowppb' );
@@ -64,9 +63,9 @@ register_deactivation_hook( __FILE__, 'deactivate_codowppb' );
 
 /**
  * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
+ * admin-specific functionality, and public-facing functionality.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-codowppb.php';
+require CODOWPPB_BASE_DIR . '/includes/class-codowppb.php';
 
 /**
  * Begins execution of the plugin.
@@ -78,9 +77,6 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-codowppb.php';
  * @since    1.0.0
  */
 function run_codowppb() {
-
-	$plugin = new Codowppb();
-	$plugin->run();
-
+	new CodoWPPB_Core();
 }
 run_codowppb();

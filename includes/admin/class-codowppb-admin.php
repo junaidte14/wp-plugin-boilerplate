@@ -12,7 +12,10 @@ if (!class_exists("CodoWPPB_Admin")){
     class CodoWPPB_Admin{
 
     	public function __construct(){
+			// Action hook to enqueue admin specific styles and scripts
     		add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles_scripts'));
+			// Action hook to add menu in settings page
+			add_action( 'admin_menu', array($this, 'codowppb_admin_menu') );
 		}
 
 		/**
@@ -33,6 +36,20 @@ if (!class_exists("CodoWPPB_Admin")){
 		
 		public static function deactivate() {
 			
+		}
+
+		public function codowppb_admin_menu(){
+			add_options_page(
+				__( 'CODOWPPB', CODOWPPB_NAME ),
+				__( 'CODOWPPB', CODOWPPB_NAME ),
+				'manage_options',
+				CODOWPPB_NAME,
+				array($this, 'display_codowppb_admin_page')
+			);
+		}
+	
+		public function display_codowppb_admin_page(){
+			require_once CODOWPPB_BASE_DIR . '/includes/admin/partials/codowppb-admin-display.php';
 		}
 
 		/**

@@ -44,6 +44,8 @@ if ( ! defined( 'CODOWPPB_PLUGIN_URL' ) )
 	
 /**
  * The code that runs during plugin activation.
+ * 
+ * @since 1.0.0
  */
 function activate_codowppb() {
 	require_once CODOWPPB_BASE_DIR . '/includes/admin/class-codowppb-admin.php';
@@ -52,6 +54,8 @@ function activate_codowppb() {
 
 /**
  * The code that runs during plugin deactivation.
+ * 
+ * @since 1.0.0
  */
 function deactivate_codowppb() {
 	require_once CODOWPPB_BASE_DIR . '/includes/admin/class-codowppb-admin.php';
@@ -64,6 +68,8 @@ register_deactivation_hook( __FILE__, 'deactivate_codowppb' );
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific functionality, and public-facing functionality.
+ * 
+ * @since 1.0.0
  */
 require CODOWPPB_BASE_DIR . '/includes/class-codowppb.php';
 

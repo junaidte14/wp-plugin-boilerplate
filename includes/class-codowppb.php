@@ -2,6 +2,8 @@
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific functionality, and public-facing functionality.
+ * 
+ * @since 1.0.0
  */
 
 // If this file is called directly, abort.
@@ -18,22 +20,39 @@ if (!class_exists("CodoWPPB_Core")){
 
 		public function codowppb_init(){
 			/**        
-		    * Load languages.     
+		    * Load languages
+			*
+			* @since 1.0.0
 		    */
 		    if ( function_exists( 'load_plugin_textdomain' ) ){
 				load_plugin_textdomain('codowppb', false, CODOWPPB_BASE_DIR . '/languages/');
 			}
 
-            //load classes with common functionality
+			/**
+			 * Load classes with common functionality
+			 * 
+			 * @since 1.0.0
+			 */
+            
 			require_once CODOWPPB_BASE_DIR .'/includes/common/class-codowppb-common.php';
 			new CodoWPPB_Common();
 
 			if(is_admin()){
-                //load classes with admin-specific functionality
+				/**
+				 * Load classes with admin-specific functionality
+				 * 
+				 * @since 1.0.0
+				 */
+                
     			require_once CODOWPPB_BASE_DIR .'/includes/admin/class-codowppb-admin.php';
 				new CodoWPPB_Admin();
     		}else{
-                //load classes with public-facing functionality
+				/**
+				 * Load classes with public-facing functionality
+				 * 
+				 * @since 1.0.0
+				 */
+                
     			require_once CODOWPPB_BASE_DIR .'/includes/public/class-codowppb-public.php';
 				new CodoWPPB_Public();
     		}

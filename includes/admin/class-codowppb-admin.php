@@ -15,17 +15,32 @@ if (!class_exists("CodoWPPB_Admin")){
     		add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles_scripts'));
 		}
 
-		//define functionality which run upon plugin activation
+		/**
+		 * Define functionality which run upon plugin activation
+		 * 
+		 * @since 1.0.0
+		 */
+
 		public static function activate() {
 			
 		}
 
-		//define functionality which run upon plugin de-activation
+		/**
+		 * Define functionality which run upon plugin de-activation
+		 * 
+		 * @since 1.0.0
+		 */
+		
 		public static function deactivate() {
 			
 		}
 
-		//enque admin styles and scripts
+		/**
+		 * Enqueue admin styles and scripts
+		 * 
+		 * @since 1.0.0
+		 */
+
 		public function enqueue_admin_styles_scripts(){
 			wp_enqueue_style('codowppb-admin-style', CODOWPPB_PLUGIN_URL . 'assets/css/codowppb-admin.css', array(), CODOWPPB_VERSION, 'all');
 			wp_enqueue_script('codowppb-admin-script', CODOWPPB_PLUGIN_URL . 'assets/js/codowppb-admin.js', array('jquery'), CODOWPPB_VERSION, '');

@@ -15,7 +15,12 @@ if (!class_exists("CodoWPPB_Common")){
     		add_action('wp_enqueue_scripts', array($this, 'enqueue_common_styles_scripts'));
 		}
 
-		//enque common styles and scripts
+		/**
+		 * Enqueue common styles and scripts
+		 * 
+		 * @since 1.0.0
+		 */
+		
 		public function enqueue_common_styles_scripts(){
 			wp_enqueue_style('codowppb-common-style', CODOWPPB_PLUGIN_URL . 'assets/css/codowppb-common.css', array(), CODOWPPB_VERSION, 'all');
 			wp_enqueue_script('codowppb-common-script', CODOWPPB_PLUGIN_URL . 'assets/js/codowppb-common.js', array('jquery'), CODOWPPB_VERSION, '');
